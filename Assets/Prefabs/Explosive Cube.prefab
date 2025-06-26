@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f2f34fa4826c24493e9f67a0715344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _childPrefab: {fileID: 1065048474247856121}
   _spawnChildrenChance: 100
   _spawnCountMin: 2
   _spawnCountMax: 6

@@ -9,7 +9,7 @@ public class CubeSpawner : MonoBehaviour
     [SerializeField, Min(1)] private int _spawnCountMin = 2;
     [SerializeField, Min(1)] private int _spawnCountMax = 6;
 
-    private float reductionFactor = 2.0f;
+    private float changeFactor = 2.0f;
 
     private void OnValidate()
     {
@@ -29,7 +29,8 @@ public class CubeSpawner : MonoBehaviour
             Vector3 randomPositionDeviation = new Vector3(Random.Range(-deviationFactor, deviationFactor), 0, Random.Range(-deviationFactor, deviationFactor));
 
             ExplosiveCube childCube = Instantiate(_cubePrefab, explosiveCube.transform.position + randomPositionDeviation, Quaternion.identity);
-            childCube.SetChanceAndSize(explosiveCube.SpawnChildrenChance / reductionFactor, explosiveCube.transform.localScale / reductionFactor);
+            childCube.SetChanceAndSize(explosiveCube.SpawnChildrenChance / changeFactor, explosiveCube.transform.localScale / changeFactor);
+            childCube.SetExplosionRadiusAndForce(explosiveCube.ExplosionRadius * changeFactor, explosiveCube.ExplosionForce * changeFactor);
             spawnedCubes.Add(childCube);
         }
 

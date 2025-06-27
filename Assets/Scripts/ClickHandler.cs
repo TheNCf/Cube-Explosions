@@ -48,12 +48,20 @@ public class ClickHandler : MonoBehaviour
         int randomPercent = Random.Range(minChance, maxChance);
 
         if (randomPercent >= explosiveCube.SpawnChildrenChance)
-            return;
+        {
+            Collider[] contacts = Physics.OverlapSphere(explosiveCube.transform.position, explosiveCube.ExplosionRadius);
+            
+            foreach (Collider contact in contacts)
+                if (contact.TryGetComponent(out ExplosiveCube cube))
+                    _exploder.Explode(explosiveCube.transform.position, cube, explosiveCube.ExplosionForce, explosionRadius: explosiveCube.ExplosionRadius);
+        }
+        else
+        {
+            List<ExplosiveCube> spawnedCubes = _cubeSpawner.Spawn(explosiveCube);
 
-        List<ExplosiveCube> spawnedCubes = _cubeSpawner.Spawn(explosiveCube);
-
-        if (spawnedCubes != null)
             foreach (var cube in spawnedCubes)
                 _exploder.Explode(explosiveCube.transform.position, cube);
+
+        }
     }
 }

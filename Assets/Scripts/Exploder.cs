@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class Exploder : MonoBehaviour
 {
-    [SerializeField] private float _explosionForce = 3.0f;
-    [SerializeField] private float _upwardsForce = 3.0f;
-    [SerializeField] private float _explosionRadius = 3.0f;
-
-    public void Explode(Vector3 explosionCenter, ExplosiveCube explosiveCube)
+    public void Explode(Vector3 explosionCenter, ExplosiveCube explosiveCube, float explosionForce = 250.0f, float upwardsForce = 25.0f, float explosionRadius = 25.0f)
     {
         if (explosiveCube.TryGetComponent(out Rigidbody rigidbody))
-            rigidbody.AddExplosionForce(_explosionForce, explosionCenter, _explosionRadius, _upwardsForce);
+            rigidbody.AddExplosionForce(explosionForce, explosionCenter, explosionRadius, upwardsForce);
     }
 }

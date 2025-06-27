@@ -13,10 +13,8 @@ GameObject:
   - component: {fileID: 5061737912564914377}
   - component: {fileID: 3551204481180455507}
   - component: {fileID: 2898126652430694987}
-  - component: {fileID: 1318994784941424916}
-  - component: {fileID: 4084699347065799102}
-  - component: {fileID: 1789034130351924238}
   - component: {fileID: -5827872107001816161}
+  - component: {fileID: 3722922314371808173}
   m_Layer: 0
   m_Name: Explosive Cube
   m_TagString: Untagged
@@ -137,49 +135,6 @@ Rigidbody:
   m_Interpolate: 2
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1318994784941424916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065048474247856121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebc549e73e856744694a67d51550faf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4084699347065799102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065048474247856121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 038d66af08424144eb793e79c37e5f84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _explosionForce: 250
-  _upwardsForce: 25
-  _explosionRadius: 25
---- !u!114 &1789034130351924238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1065048474247856121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54f2f34fa4826c24493e9f67a0715344, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _childPrefab: {fileID: 1065048474247856121}
-  _spawnChildrenChance: 100
-  _spawnCountMin: 2
-  _spawnCountMax: 6
 --- !u!114 &-5827872107001816161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,3 +147,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33bdae7541c0f014baa009c6a89f6271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3722922314371808173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065048474247856121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc549e73e856744694a67d51550faf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <SpawnChildrenChance>k__BackingField: 100

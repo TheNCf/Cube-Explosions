@@ -8,8 +8,9 @@ public class Exploder : MonoBehaviour
     [SerializeField] private float _upwardsForce = 3.0f;
     [SerializeField] private float _explosionRadius = 3.0f;
 
-    public void Explode(Rigidbody bodyToApply)
+    public void Explode(Vector3 explosionCenter, ExplosiveCube explosiveCube)
     {
-        bodyToApply.AddExplosionForce(_explosionForce, transform.position, _explosionRadius, _upwardsForce);
+        if (explosiveCube.TryGetComponent(out Rigidbody rigidbody))
+            rigidbody.AddExplosionForce(_explosionForce, explosionCenter, _explosionRadius, _upwardsForce);
     }
 }

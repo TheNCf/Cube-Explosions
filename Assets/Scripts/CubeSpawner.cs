@@ -19,15 +19,6 @@ public class CubeSpawner : MonoBehaviour
 
     public List<ExplosiveCube> Spawn(ExplosiveCube explosiveCube)
     {
-        Destroy(explosiveCube.gameObject);
-
-        int minChance = 0;
-        int maxChance = 100;
-        int randomPercent = Random.Range(minChance, maxChance);
-
-        if (randomPercent >= explosiveCube.SpawnChildrenChance)
-            return null;
-
         List<ExplosiveCube> spawnedCubes = new List<ExplosiveCube>();
 
         int count = Random.Range(_spawnCountMin, _spawnCountMax + 1);

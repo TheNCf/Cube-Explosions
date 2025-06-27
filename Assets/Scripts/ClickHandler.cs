@@ -41,6 +41,15 @@ public class ClickHandler : MonoBehaviour
 
     private void OnCubeClick(ExplosiveCube explosiveCube)
     {
+        Destroy(explosiveCube.gameObject);
+
+        int minChance = 0;
+        int maxChance = 100;
+        int randomPercent = Random.Range(minChance, maxChance);
+
+        if (randomPercent >= explosiveCube.SpawnChildrenChance)
+            return;
+
         List<ExplosiveCube> spawnedCubes = _cubeSpawner.Spawn(explosiveCube);
 
         if (spawnedCubes != null)

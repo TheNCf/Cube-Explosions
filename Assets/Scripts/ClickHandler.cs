@@ -7,25 +7,19 @@ public class ClickHandler : MonoBehaviour
     [SerializeField] private CubeSpawner _cubeSpawner;
     [SerializeField] private Exploder _exploder;
 
-    private void Awake()
+    private void OnValidate()
     {
         if (_inputReader == null)
         {
-            Debug.LogError($"Field \"{_inputReader.GetType().Name}\" must be assigned in {typeof(ClickHandler).Name} component!");
-            enabled = false;
-            return;
+            Debug.LogWarning($"Field \"{_inputReader.GetType().Name}\" must be assigned in {typeof(ClickHandler).Name} component!");
         }
         else if (_cubeSpawner == null)
         {
-            Debug.LogError($"Field \"{_cubeSpawner.GetType().Name}\" must be assigned in {typeof(ClickHandler).Name} component!");
-            enabled = false;
-            return;
+            Debug.LogWarning($"Field \"{_cubeSpawner.GetType().Name}\" must be assigned in {typeof(ClickHandler).Name} component!");
         }
         else if (_exploder == null)
         {
-            Debug.LogError($"Field \"{_exploder.GetType().Name}\" must be assigned in {typeof(ClickHandler).Name} component!");
-            enabled = false;
-            return;
+            Debug.LogWarning($"Field \"{_exploder.GetType().Name}\" must be assigned in {typeof(ClickHandler).Name} component!");
         }
     }
 
@@ -49,11 +43,7 @@ public class ClickHandler : MonoBehaviour
 
         if (randomPercent >= explosiveCube.SpawnChildrenChance)
         {
-            Collider[] contacts = Physics.OverlapSphere(explosiveCube.transform.position, explosiveCube.ExplosionRadius);
-            
-            foreach (Collider contact in contacts)
-                if (contact.TryGetComponent(out ExplosiveCube cube))
-                    _exploder.Explode(explosiveCube.transform.position, cube, explosiveCube.ExplosionForce, explosionRadius: explosiveCube.ExplosionRadius);
+            _exploder.ExplodeAround(explosiveCube);
         }
         else
         {

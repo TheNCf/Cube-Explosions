@@ -9,12 +9,11 @@ public class InputReader : MonoBehaviour
 
     public event Action<ExplosiveCube> CubeHit;
 
-    private void Start()
+    private void OnValidate()
     {
         if (_camera == null)
         {
-            Debug.LogError($"Field \"{_camera.GetType().Name}\" must be assigned in {typeof(InputReader).Name} component!");
-            enabled = false;
+            Debug.LogWarning($"Field \"{_camera.GetType().Name}\" must be assigned in {typeof(InputReader).Name} component!");
         }
     }
 

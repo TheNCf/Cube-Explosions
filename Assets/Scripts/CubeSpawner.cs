@@ -29,8 +29,13 @@ public class CubeSpawner : MonoBehaviour
             Vector3 randomPositionDeviation = new Vector3(Random.Range(-deviationFactor, deviationFactor), 0, Random.Range(-deviationFactor, deviationFactor));
 
             ExplosiveCube childCube = Instantiate(_cubePrefab, explosiveCube.transform.position + randomPositionDeviation, Quaternion.identity);
-            childCube.SetChanceAndSize(explosiveCube.SpawnChildrenChance / changeFactor, explosiveCube.transform.localScale / changeFactor);
-            childCube.SetExplosionRadiusAndForce(explosiveCube.ExplosionRadius * changeFactor, explosiveCube.ExplosionForce * changeFactor);
+
+            float chance = explosiveCube.SpawnChildrenChance / changeFactor;
+            Vector3 scale = explosiveCube.transform.localScale / changeFactor;
+            float explosionRadius = explosiveCube.ExplosionRadius * changeFactor;
+            float explosionForce = explosiveCube.ExplosionForce * changeFactor;
+            childCube.Initialize(chance, scale, explosionRadius, explosionForce);
+
             spawnedCubes.Add(childCube);
         }
 
